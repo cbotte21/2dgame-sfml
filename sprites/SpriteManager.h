@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 class SpriteManager {
-	std::vector<DynamicSprite*> sprites;
+	std::vector<DynamicSprite*> sprites; //TODO: BREAKUP -> players, entities. Will allow for player collision detection. Entity { canPickup: bool }
 	public:
 		void onEvent(sf::Event event) {
 			for (DynamicSprite* sprite : sprites) {
