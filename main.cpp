@@ -2,12 +2,13 @@
 #include <iostream>
 
 #include "contexts/WindowContext.h"
+#include "levels/LevelManager.h"
 #include "sprites/dynamic/player/Rowdy.h"
 #include "sprites/dynamic/background/Background.h"
 #include "sprites/SpriteManager.h"
 #include "Clock.h"
 
-#define FRAMERATE_LIMIT 60
+#define FRAMERATE_LIMIT 200
 #define GAME_NAME "Cody Botte"
 #define DEFAULT_WIDTH 1400
 #define DEFAULT_HEIGHT 900
@@ -15,28 +16,21 @@
 int main()
 {
     //Game values
-    sf::Color bgColor(52, 140, 49);
 	int fps = FRAMERATE_LIMIT;
-    Clock clock(&fps);
-	WindowContext wContext(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 
-    //Init window	
+    //Init window
+	WindowContext wContext(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     sf::RenderWindow window(sf::VideoMode(wContext.width, wContext.height), GAME_NAME);
     window.setFramerateLimit(FRAMERATE_LIMIT);
 
-    //Init sprites TODO: Should be done by level creator
-	SpriteManager spriteManager;
-	
-    Rowdy rowdy(&wContext);
-    Background background(&wContext, bgColor);
-	spriteManager.add(&background); //Background must be added first (Ascending render order)
-	spriteManager.add(&rowdy);
+    //Init level
+	LevelManager levelManager(&wContext, &fps);
+	levelManager.load("example_level.txt");
 
     //Game loop
     while (window.isOpen()) {
 		//Custom tick logic
-		clock.onTick();
-		spriteManager.onTick();
+		levelManager.onTick();
 		
 		//EventHandlers
 		sf::Event event;
@@ -49,11 +43,10 @@ int main()
 				window.close();
 	            break;
 			}
-			spriteManager.onEvent(event);
+			levelManager.onEvent(event);
 		}
-		
 		//Render
-		spriteManager.render(&window);
+		levelManager.render(&window);
     }
 
     return 0;

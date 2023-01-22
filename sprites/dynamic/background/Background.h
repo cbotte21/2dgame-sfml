@@ -6,7 +6,8 @@
 
 class Background : public DynamicSprite {
 	public:
-		Background(WindowContext* wContext, sf::Color color) : DynamicSprite::DynamicSprite(wContext) {
+		Background(WindowContext* wContext) : DynamicSprite::DynamicSprite(wContext) {
+			sf::Color color(52, 140, 49);
 			//Finalize
 			sf::Image image;
 			image.create(wContext->width, wContext->height, color);

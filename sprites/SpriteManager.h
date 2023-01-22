@@ -17,11 +17,9 @@ class SpriteManager {
 		void add(DynamicSprite* sprite) {
 			sprites.push_back(sprite);
 		}
-		void render(sf::RenderWindow* window) {
-			window->clear();
+		void draw(sf::RenderWindow* window) {
 			for (DynamicSprite* sprite : sprites) {
 				window->draw(*sprite);
 			}
-			window->display();
 		}
 };

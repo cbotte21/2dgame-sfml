@@ -1,0 +1,7 @@
+options:
+	clock true
+
+player:
+	rowdy x, y
+entities:
+	background 0, 0
