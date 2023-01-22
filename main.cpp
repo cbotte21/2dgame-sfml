@@ -15,7 +15,7 @@
 int main()
 {
     //Game values
-    sf::Color bgColor(255, 255, 255);
+    sf::Color bgColor(52, 140, 49);
 	int fps = FRAMERATE_LIMIT;
     Clock clock(&fps);
 	WindowContext wContext(DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -29,8 +29,8 @@ int main()
 	
     Rowdy rowdy(&wContext);
     Background background(&wContext, bgColor);
+	spriteManager.add(&background); //Background must be added first (Ascending render order)
 	spriteManager.add(&rowdy);
-	spriteManager.add(&background);
 
     //Game loop
     while (window.isOpen()) {

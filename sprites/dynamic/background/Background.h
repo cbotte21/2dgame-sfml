@@ -8,6 +8,12 @@ class Background : public DynamicSprite {
 	public:
 		Background(WindowContext* wContext, sf::Color color) : DynamicSprite::DynamicSprite(wContext) {
 			//Finalize
-			this->setPosition(sf::Vector2f(0, 0));
+			sf::Image image;
+			image.create(wContext->width, wContext->height, color);
+			sf::Texture texture;
+			texture.loadFromImage(image);
+			
+			this->setTexture(texture);
+			this->setColor(color);
 		}
 };

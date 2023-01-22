@@ -17,11 +17,10 @@ class DepthSprite : public sf::Sprite {
 		float difference = (sprite->getScale().y != 1) ? 1.0/sprite->getScale().y : 1;
 		sprite->scale(sf::Vector2f(difference, difference));
 		//Scale based on height
-		float scale = (sprite->getPosition().y/wContext->height);
-		if (scale == 0) {
+		float scale = (sprite->getPosition().y/wContext->height);//Height is at top, bottom might be a better measurement
+		if (scale <= 0) {
 			scale = 0.001f;
 		}
-		std::cout << scale << std::endl;
 		sprite->scale(sf::Vector2f(scale, scale));
 	}
 	public:
