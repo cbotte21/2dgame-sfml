@@ -20,7 +20,7 @@ class DynamicSprite : public DepthSprite {
 		eventHandlers.push_back(eventHandler);
 	}
 	void onEvent(sf::Event event) {
-		for (int i = 0; i < eventHandlers.size(); i++) {
+		for (int i = 0; i < (int)eventHandlers.size(); i++) {
 			eventHandlers.at(i)->handle(event);
 		}
 	}
@@ -28,7 +28,7 @@ class DynamicSprite : public DepthSprite {
 		tickHandlers.push_back(tickHandler);
 	}
 	void onTick() {
-		for (int i = 0; i < tickHandlers.size(); i++) {
+		for (int i = 0; i < (int)tickHandlers.size(); i++) {
 			tickHandlers.at(i)->handle();
 		}
 	}

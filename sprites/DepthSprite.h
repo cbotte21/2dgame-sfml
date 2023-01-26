@@ -4,6 +4,8 @@
 #include "../contexts/WindowContext.h"
 #include <stdlib.h>
 
+#include <iostream>
+
 /*
 	The point of this class it to shrink the character as he progresses along the Y-axis.
 	In hopes of rendering a 3d-like 2d game.
@@ -18,8 +20,10 @@ class DepthSprite : public sf::Sprite {
 		sprite->scale(sf::Vector2f(difference, difference));
 		//Scale based on height
 		float scale = (sprite->getPosition().y/wContext->height);//Height is at top, bottom might be a better measurement
-		if (scale <= 0) {
-			scale = 0.001f;
+		scale /= 2;
+		std::cout << scale << std::endl;
+		if (scale <= 0) { //Minimum sprite size logic
+			scale = 0.001f; 
 		}
 		sprite->scale(sf::Vector2f(scale, scale));
 	}

@@ -1,17 +1,25 @@
+/*
+
+	Name: Cody Botte
+	Description: A basic game engine, allowing the following...
+		- dynamic sprite loading
+		- dynamically registering event and tick handlers
+		- game clock
+		- loading levels from text file
+
+*/
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
 #include "contexts/WindowContext.h"
 #include "levels/LevelManager.h"
-#include "sprites/dynamic/player/Rowdy.h"
-#include "sprites/dynamic/background/Background.h"
-#include "sprites/SpriteManager.h"
 #include "Clock.h"
 
 #define FRAMERATE_LIMIT 200
 #define GAME_NAME "Cody Botte"
-#define DEFAULT_WIDTH 1400
-#define DEFAULT_HEIGHT 900
+#define DEFAULT_WIDTH 550
+#define DEFAULT_HEIGHT 350
 
 int main()
 {

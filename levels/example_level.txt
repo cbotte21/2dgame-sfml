@@ -1,7 +1,5 @@
-options:
-	clock true
-
-player:
-	rowdy x, y
+player 50 100
+design:
+	background 0 0
+barriers:
 entities:
-	background 0, 0
